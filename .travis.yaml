@@ -1,12 +1,7 @@
-sudo: false
-
 language: go
 go:
   - "1.11"
   - master
-
-env:
-  - CODECOV_TOKEN=e0993bb5-cd6c-4625-9270-d36ac73136d0
 
 before_install:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
@@ -17,7 +12,4 @@ before_script:
   - dep ensure
 
 script:
-  - go test -race -coverprofile=coverage.txt -covermode=atomic
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - go test ./...
